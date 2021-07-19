@@ -1,0 +1,26 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: schoolgateway
+  cloud:
+    gateway:
+      routes:
+        - id: teacher-service
+          uri: http://localhost:8801
+          predicates:
+            - Path=/teachers/**
+          filters:
+            - StripPrefix=1
+        - id: student-service
+          uri: http://localhost:8802
+          predicates:
+            - Path=/students/**
+          filters:
+            - StripPrefix=1
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

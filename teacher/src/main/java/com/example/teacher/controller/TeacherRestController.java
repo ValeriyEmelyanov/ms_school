@@ -21,7 +21,7 @@ public class TeacherRestController {
     @Autowired
     private StudentClient studentClient;
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Teacher> getAll() {
         return teacherRepository.findAll();
     }

@@ -20,13 +20,13 @@ public class StudentRestController {
     @Autowired
     private Environment environment;
 
-    @GetMapping("/")
+    @GetMapping("/info")
     public String ping() {
         String port = environment.getProperty("local.server.port");
         return "Student instance with port " + port;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Student> getAll() {
         return studentRepository.findAll();
     }
@@ -36,7 +36,7 @@ public class StudentRestController {
         return studentRepository.findById(id);
     }
 
-    @GetMapping("/all/teacher/{id}")
+    @GetMapping("/teachers/{id}")
     public List<Student> getForClassTeacher(@PathVariable int id) {
         return studentRepository.findByClassTeacherId(id);
     }
