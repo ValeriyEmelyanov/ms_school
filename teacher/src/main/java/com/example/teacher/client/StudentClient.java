@@ -9,6 +9,6 @@ import java.util.List;
 @FeignClient(name = "student-service")
 public interface StudentClient {
 
-    @GetMapping("/all/teacher/{id}")
+    @GetMapping("/teachers/{id}")
     public List<StudentBean> getForClassTeacherId(@PathVariable int id);
 }
